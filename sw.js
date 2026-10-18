@@ -1,6 +1,6 @@
 /* Zippy's Game Land service worker: makes the game work offline.
    When you change index.html, change VERSION too so phones pick up the update. */
-const VERSION = 'zippy-v1';
+const VERSION = 'zippy-v2';
 const CORE = [
   './', './index.html', './manifest.webmanifest',
   './icons/icon-192.png', './icons/icon-512.png', './icons/maskable-512.png',
