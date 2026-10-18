@@ -1,0 +1,26 @@
+ZIPPY'S GAME LAND  -  app hishebe install korar guide
+=====================================================
+
+Ei folder e ki ache
+  index.html           game website
+  manifest.webmanifest app er naam, icon, rong
+  sw.js                offline e khelar jonno
+  icons/               app icon
+
+GURUTTPURNO: app hishebe install korte hole website ta internet e (https address e) rakhte hobe.
+File ta computer e double-click kore khulle game cholbe, kintu "Install" option ashbe na.
+
+STEP 1: Free te online e rakho (je kono ekta)
+  - Netlify Drop (app.netlify.com/drop): puro folder ta drag and drop koro.
+  - Cloudflare Pages ba GitHub Pages: folder upload koro.
+  Tarpor tomar website er address (jemon https://xxxx.netlify.app) pabe.
+
+STEP 2: Phone / computer e install koro
+  Android (Chrome):  address e jao > upore 3-dot menu > "Install app" ba "Add to Home screen".
+  iPhone (Safari):   address e jao > Share button > "Add to Home Screen".
+  Computer (Chrome/Edge): address bar er daan dike install icon > "Install".
+  Install hole screen e Zippy icon ashbe. Icon e click korle app er moto full screen e khulbe.
+
+Offline: ekbar online e khulle pore internet chhara-o cholbe.
+Update dile: index.html bodlano porer bar sw.js er prothom line e
+  const VERSION = 'zippy-v1';  ->  'zippy-v2'  kore dao, tahole phone e notun version ashbe.
