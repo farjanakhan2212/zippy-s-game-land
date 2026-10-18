@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <!doctype html>
 <html lang="en"><head>
 <meta charset="utf-8">
@@ -13,11 +12,6 @@
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
 <meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
-=======
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
-<title>Zippy's Game Land</title>
-<meta name="claude:viewport-fit-sides" content="cover">
->>>>>>> 46ffb2d502444f3c5fb90bfa57bf7d5c21d7957a
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@600;800&display=swap">
 <style>
 /* Layout concept: a sunny sky-blue world. Chunky sticker-style cards with thick ink outlines and a 3D bottom shadow.
@@ -307,6 +301,7 @@ h2{font-family:var(--f-display);font-weight:800;font-size:32px;line-height:1.1;m
     <div class="logo"><i>Zippy's</i> Game Land</div>
     <div class="top-right">
       <div class="pill stars-pill" aria-label="Stars collected"><span>Stars</span><b><span class="star-ico">★</span><span id="totalStars">0</span></b></div>
+      <button class="btn btn-small" id="installBtn" type="button" hidden>Install app</button>
       <button class="btn btn-small" id="soundBtn" type="button" aria-pressed="true">Sound: On</button>
     </div>
   </div>
@@ -1532,14 +1527,37 @@ renderCards(); renderTop();
 })();
 </script>
 
-<<<<<<< HEAD
 <script>
 // Offline support: only works when the page is opened from a web address (https), not from a file on disk.
 if('serviceWorker' in navigator && /^https?:/.test(location.protocol)){
   window.addEventListener('load',function(){navigator.serviceWorker.register('sw.js').catch(function(){})});
 }
 </script>
+<script>
+// "Install app" button. Chrome/Edge/Android show it when the browser allows installing; iPhone shows how to add it.
+(function(){
+  var btn=document.getElementById('installBtn'); if(!btn)return;
+  var standalone=(window.matchMedia&&window.matchMedia('(display-mode: standalone)').matches)||window.navigator.standalone;
+  if(standalone)return;
+  var deferred=null, ios=/iphone|ipad|ipod/i.test(navigator.userAgent);
+  var tip=document.createElement('div');
+  tip.setAttribute('role','status'); tip.hidden=true;
+  tip.style.cssText='position:fixed;left:50%;bottom:max(18px,env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:60;max-width:min(92vw,420px);background:#1B2A4A;color:#fff;border-radius:16px;padding:12px 16px;font:700 16px/1.35 Nunito,system-ui,sans-serif;text-align:center;box-shadow:0 6px 0 rgba(0,0,0,.25)';
+  document.body.appendChild(tip);
+  function say(t){tip.textContent=t;tip.hidden=false;setTimeout(function(){tip.hidden=true},6000)}
+  window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();deferred=e;btn.hidden=false});
+  window.addEventListener('appinstalled',function(){btn.hidden=true;deferred=null});
+  if(ios)btn.hidden=false;
+  btn.addEventListener('click',function(){
+    if(deferred){
+      deferred.prompt();
+      deferred.userChoice.then(function(){deferred=null;btn.hidden=true},function(){});
+    }else if(ios){
+      say('In Safari, tap the Share button, then choose Add to Home Screen.');
+    }else{
+      say('Open the browser menu and choose Install app or Add to Home screen.');
+    }
+  });
+})();
+</script>
 </body></html>
-=======
-</body></html>
->>>>>>> 46ffb2d502444f3c5fb90bfa57bf7d5c21d7957a
