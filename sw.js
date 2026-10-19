@@ -1,6 +1,6 @@
 /* Zippy's Game Land service worker: makes the game work offline.
    When you change index.html, change VERSION too so phones pick up the update. */
-const VERSION = 'zippy-v2';
+const VERSION = 'zippy-v3';
 const CORE = [
   './', './index.html', './manifest.webmanifest',
   './icons/icon-192.png', './icons/icon-512.png', './icons/maskable-512.png',
@@ -33,9 +33,21 @@ function staleWhileRevalidate(req) {
   });
 }
 
+// Page loads: try the network first so updates show up straight away, fall back to the saved copy offline.
+function networkFirst(req) {
+  return fetch(req).then((res) => {
+    if (res && res.ok) {
+      const copy = res.clone();
+      caches.open(VERSION).then((c) => c.put(req, copy));
+    }
+    return res;
+  }).catch(() => caches.match(req, { ignoreSearch: true }).then((hit) => hit || caches.match('./index.html')));
+}
+
 self.addEventListener('fetch', (e) => {
   const req = e.request;
   if (req.method !== 'GET') return;
+  if (req.mode === 'navigate') { e.respondWith(networkFirst(req)); return; }
   const url = new URL(req.url);
   const sameOrigin = url.origin === self.location.origin;
   const fonts = url.hostname === 'fonts.googleapis.com' || url.hostname === 'fonts.gstatic.com';

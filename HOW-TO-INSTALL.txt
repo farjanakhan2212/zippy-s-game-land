@@ -8,17 +8,26 @@ GITHUB PAGES e rakhar niyom
   3. 1-2 minute pore address pabe:  https://USERNAME.github.io/REPO-NAME/
   4. Shudhu OI address ta use koro. github.com er file page ba raw.githubusercontent.com er link e install hobe na.
 
+CHECK KORO FILE GULO THIK JAYGAY ACHE KINA (10 second)
+  Address er shesh e eigulo likhe khulo. Kono ta 404 dile oi file ta bhul jaygay upload hoyeche.
+    .../manifest.webmanifest   (JSON likha dekhabe)
+    .../sw.js                  (code dekhabe)
+    .../icons/icon-512.png     (Zippy-r chhobi dekhabe)
+
 INSTALL KORA
-  Android:  Chrome e address ta khulo. Page er upore "Install app" button ashle sheta chap.
-            Na ashle Chrome er 3-dot menu > "Install app" ba "Add to Home screen".
-  iPhone:   Safari e khulo > Share button > "Add to Home Screen". (iPhone e Chrome diye hobe na.)
+  Page er upore "Install app" button ta shobsomoy thakbe. Chap dile:
+    - Chrome install allow korle sorasori install hobe.
+    - Na hole kon browser e ki korte hobe seta likhe dekhabe.
+  Android: Chrome e khulo (Redmi/Xiaomi er "Mi Browser" ba Samsung er onno browser diye hobe na).
+           Chrome er 3-dot menu > "Install app" ba "Add to Home screen".
+  iPhone / iPad: Safari e khulo > Share button > "Add to Home Screen". (Chrome diye hobe na.)
   Computer: Chrome/Edge e khulo, address bar er daan dike install icon ba page er "Install app" button.
 
-JODI BUTTON NA ASHE
-  - Link ta Messenger/Facebook/WhatsApp er vitore khulle install hobe na. "Open in Chrome" (ba Safari) kore khulo.
+JODI TOBUO NA HOY
+  - Link ta Messenger/Facebook/WhatsApp/Telegram er vitore khulle install hobe na. "Open in Chrome" kore khulo.
+  - Page ta ekbar reload koro (purono version cache e thakte pare), tarpor abar chesta koro.
+  - Browser er Settings > Site settings theke ei site er data clear kore abar khulo.
   - Address ta https:// diye shuru hocche kina dekho.
-  - Browser er purono data clear kore (ba incognito chhara) abar khulo, kichukkhon pore abar try koro.
-  - Chrome e address bar e er age ekbar install korle ar dekhabe na (app already install kora).
 
 UPDATE DILE
-  index.html bodlano porer bar sw.js er prothom line e  const VERSION = 'zippy-v2';  ke 'zippy-v3' koro.
+  index.html bodlano porer bar sw.js er prothom line e  const VERSION = 'zippy-v3';  ke 'zippy-v4' koro.
